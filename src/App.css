@@ -1,0 +1,141 @@
+.app-root {
+  min-height: 100vh;
+  background: #0f0f13;
+  font-family: 'DM Mono', 'Courier New', monospace;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.app-inner {
+  width: 100%;
+  max-width: 520px;
+  padding: 30px 16px 52px;
+}
+
+.card {
+  background: #18181f;
+  border: 1px solid #21212c;
+  border-radius: 16px;
+}
+
+.habit-row {
+  transition: background 0.15s;
+  border-radius: 10px;
+}
+.habit-row:hover { background: #1c1c27; }
+
+.day-btn {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  border: none;
+  cursor: pointer;
+  font-family: 'DM Mono', monospace;
+  font-size: 13px;
+  font-weight: 500;
+  transition: transform 0.12s, background 0.18s;
+  position: relative;
+}
+.day-btn:hover:not(:disabled) { transform: scale(1.1); }
+.day-btn:active:not(:disabled) { transform: scale(0.88); }
+.day-btn.today-ring { box-shadow: 0 0 0 2px #ffffff28; }
+
+@keyframes checkPop {
+  0%   { transform: scale(1); }
+  35%  { transform: scale(1.35); }
+  65%  { transform: scale(0.88); }
+  100% { transform: scale(1); }
+}
+@keyframes glowPulse {
+  0%   { box-shadow: 0 0 0 0   rgba(255,255,255,0.35); }
+  55%  { box-shadow: 0 0 0 8px rgba(255,255,255,0); }
+  100% { box-shadow: 0 0 0 0   rgba(255,255,255,0); }
+}
+.just-done {
+  animation: checkPop 0.42s cubic-bezier(0.34,1.56,0.64,1), glowPulse 0.6s ease forwards;
+}
+
+.progress-track { background: #1c1c26; border-radius: 99px; height: 3px; width: 100%; overflow: hidden; }
+.progress-fill  { height: 100%; border-radius: 99px; transition: width 0.6s cubic-bezier(0.34,1.56,0.64,1); }
+.mini-track { background: #1e1e28; border-radius: 99px; height: 3px; width: 44px; }
+.mini-fill  { border-radius: 99px; height: 3px; transition: width 0.35s ease; }
+
+.add-btn {
+  background: #18181f;
+  border: 1px dashed #2b2b38;
+  color: #484858;
+  border-radius: 12px;
+  padding: 13px;
+  width: 100%;
+  cursor: pointer;
+  font-family: 'DM Mono', monospace;
+  font-size: 12px;
+  transition: all 0.15s;
+  letter-spacing: 0.06em;
+}
+.add-btn:hover { border-color: #555; color: #aaa; background: #1c1c27; }
+
+.input-field {
+  background: #0f0f13;
+  border: 1px solid #21212c;
+  border-radius: 10px;
+  color: #eee;
+  font-family: 'DM Mono', monospace;
+  font-size: 13px;
+  padding: 10px 14px;
+  outline: none;
+  width: 100%;
+  transition: border-color 0.15s;
+}
+.input-field:focus { border-color: #404050; }
+.input-field::placeholder { color: #32323f; }
+
+.confirm-btn {
+  border: none;
+  border-radius: 10px;
+  padding: 10px 20px;
+  font-family: 'DM Mono', monospace;
+  font-size: 12px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.15s;
+  letter-spacing: 0.04em;
+}
+.confirm-btn:hover { opacity: 0.85; transform: translateY(-1px); }
+
+.cancel-btn {
+  background: transparent;
+  border: 1px solid #272732;
+  border-radius: 10px;
+  padding: 10px 16px;
+  font-family: 'DM Mono', monospace;
+  font-size: 12px;
+  color: #555;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+.cancel-btn:hover { border-color: #555; color: #aaa; }
+
+.color-swatch { width: 20px; height: 20px; border-radius: 50%; cursor: pointer; border: 2px solid transparent; transition: transform 0.12s; flex-shrink: 0; }
+.color-swatch:hover { transform: scale(1.2); }
+.color-swatch.selected { border-color: #fff; }
+
+.delete-btn { background: transparent; border: none; color: #2e2e3e; cursor: pointer; font-size: 15px; padding: 4px 6px; border-radius: 6px; transition: color 0.15s, background 0.15s; line-height: 1; flex-shrink: 0; }
+.delete-btn:hover { color: #ff6b6b; background: #ff6b6b14; }
+
+.icon-btn { background: transparent; border: none; cursor: pointer; font-size: 14px; opacity: 0.35; transition: opacity 0.15s; padding: 4px; border-radius: 6px; }
+.icon-btn:hover { opacity: 0.8; }
+
+.streak-badge { font-size: 9px; border-radius: 99px; padding: 1px 6px; letter-spacing: 0.05em; transition: all 0.2s; }
+
+@keyframes slideIn { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: translateY(0); } }
+.slide-in { animation: slideIn 0.2s ease; }
+
+@keyframes perfectIn { 0% { opacity: 0; transform: scale(0.7) translateY(10px); } 100% { opacity: 1; transform: scale(1) translateY(0); } }
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+@keyframes slideUp { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
+
+.micro-copy { font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; transition: color 0.4s; }
+
+.crown { font-size: 10px; position: absolute; top: -12px; left: 50%; transform: translateX(-50%); filter: drop-shadow(0 0 4px #FFD93Daa); }
